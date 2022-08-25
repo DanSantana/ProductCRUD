@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Produit>
+@{
+    ViewData["Title"] = "Produits";
+}
+<div>
+<a asp-controller="Produit" asp-action="Create">Ajouter un Produit</a>
+
+</div>
+
+
+
+<div class="text-center">
+    <h1 class="display-4">List des Produits</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Designation</th>
+                <th scope="col">Prix</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+        </thead>
+    @foreach(Produit prod in Model)
+    {
+      <tr>
+      <td>@prod.Designation</td>
+      <td>@prod.Prix</td>
+      <td><a asp-controller="Produit" asp-action="Edit" asp-route-Id="@prod.Identifiant" >Modifier</a></td>
+      <td><a asp-controller="Produit" asp-action="Details" asp-route-Id="@prod.Identifiant">Détails</a></td>
+      <td><a asp-controller="Produit" asp-action="Delete" asp-route-Id="@prod.Identifiant">Supprimir</a></td>      
+      </tr>      
+    }
+    </table>
+</div>
+
